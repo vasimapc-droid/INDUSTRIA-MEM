@@ -1,0 +1,11 @@
+package com.industriamem.repository;
+
+import com.industriamem.entity.AuditLog;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface AuditLogRepository extends JpaRepository<AuditLog, Long> {
+    List<AuditLog> findTop100ByOrderByCreatedAtDesc();
+    List<AuditLog> findByUserIdOrderByCreatedAtDesc(Long userId);
+    List<AuditLog> findByActionOrderByCreatedAtDesc(String action);
+}

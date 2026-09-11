@@ -1,0 +1,10 @@
+﻿{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "backend: run",  "type": "shell", "command": "cd backend; mvn spring-boot:run" },
+    { "label": "frontend: dev", "type": "shell", "command": "cd frontend; npm run dev" },
+    { "label": "ai: run",       "type": "shell", "command": "cd ai-service; .\\.venv\\Scripts\\Activate.ps1; uvicorn app.main:app --reload --port 8000" },
+    { "label": "docker: up",    "type": "shell", "command": "docker compose up --build" },
+    { "label": "docker: down",  "type": "shell", "command": "docker compose down" }
+  ]
+}
