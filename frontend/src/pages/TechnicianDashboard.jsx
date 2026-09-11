@@ -19,7 +19,7 @@ export default function TechnicianDashboard() {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 fade-seq">
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Technician Dashboard</h1>
         <p className="text-sm text-slate-500 mt-1">Your incidents, requests and knowledge at a glance</p>
@@ -28,7 +28,7 @@ export default function TechnicianDashboard() {
       {loading ? (
         <SkeletonCardList count={4} />
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 stagger">
           <StatCard label="My Open Incidents" value={data.myOpenIncidents ?? '-'} icon={AlertTriangle} tone="amber" />
           <StatCard label="Reported (30d)" value={data.myRecentReports ?? '-'} icon={FilePlus} tone="brand" />
           <StatCard label="Pending Requests" value={data.myPendingRequests ?? '-'} icon={Clock} tone="red" />
@@ -66,7 +66,7 @@ export default function TechnicianDashboard() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <p className="font-medium text-slate-800 text-sm">{i.title}</p>
-                    <p className="text-xs text-slate-500 mt-1">{i.machine?.name} Â· {new Date(i.incidentDate || i.createdAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-slate-500 mt-1">{i.machine?.name} Ã‚Â· {new Date(i.incidentDate || i.createdAt).toLocaleDateString()}</p>
                   </div>
                   <div className="flex flex-col items-end gap-1">
                     <PriorityBadge priority={i.priority} />
@@ -94,7 +94,7 @@ export default function TechnicianDashboard() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <p className="font-medium text-slate-800 text-sm">{r.subject}</p>
-                    <p className="text-xs text-slate-500 mt-1">To {r.expert?.fullName} Â· {new Date(r.createdAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-slate-500 mt-1">To {r.expert?.fullName} Ã‚Â· {new Date(r.createdAt).toLocaleDateString()}</p>
                   </div>
                   <StatusBadge status={r.status} />
                 </div>

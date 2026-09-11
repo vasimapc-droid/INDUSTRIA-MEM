@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserPlus, Mail, Lock, User, BadgeCheck, Phone } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import AnimatedBackground from '../components/AnimatedBackground';
+import FloatingIcons from '../components/FloatingIcons';
 
 export default function Signup() {
   const { register } = useAuth();
@@ -56,36 +58,64 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
-      <div className="hidden lg:flex flex-col justify-between p-12 bg-navy-900 text-white">
-        <div>
-          <h1 className="text-3xl font-bold">INDUSTRIA-MEM</h1>
-          <p className="text-slate-400 mt-2">AI-Powered Industrial Experience Intelligence</p>
+      {/* LEFT: Animated hero */}
+      <div className="login-hero-panel hidden lg:flex flex-col justify-between p-12 bg-navy-900 text-white relative overflow-hidden">
+        <AnimatedBackground />
+        <FloatingIcons />
+
+        <div className="relative z-10">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center font-bold shadow-lg glow-blue">
+              IM
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight">INDUSTRIA-MEM</h1>
+              <p className="text-xs text-slate-400">Knowledge Continuity Platform</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p className="text-2xl font-semibold leading-snug">
-            Join the platform.<br />Preserve your experience.
+
+        <div className="relative z-10 space-y-6 fade-scale-in">
+          <p className="text-3xl font-semibold leading-snug relative z-10" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
+            Join the platform.<br />
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Preserve your experience.
+            </span>
           </p>
-          <p className="text-slate-400 mt-6 text-sm">
+          <p className="text-slate-300 text-sm max-w-md leading-relaxed relative z-10" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
             Create an account to report incidents, capture knowledge, and reuse
             the practical expertise of your team.
           </p>
         </div>
-        <p className="text-slate-500 text-xs">2025 Industria-MEM - Automotive Manufacturing</p>
+
+        <div className="relative z-10">
+          <p className="text-slate-500 text-xs">Ã‚Â© 2025 Industria-MEM Ã‚Â· Automotive Manufacturing</p>
+        </div>
       </div>
 
-      <div className="flex items-center justify-center p-8 bg-slate-50">
-        <form onSubmit={submit} className="w-full max-w-md card p-8">
+      {/* RIGHT: Signup form */}
+      <div className="flex items-center justify-center p-8 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
+        <div className="orb orb-blue animate-drift"
+          style={{ width: 200, height: 200, top: '-50px', right: '-50px', opacity: 0.25 }} />
+        <div className="orb orb-purple animate-drift-slow"
+          style={{ width: 240, height: 240, bottom: '-80px', left: '-60px', opacity: 0.2 }} />
+
+        <form onSubmit={submit} className="w-full max-w-md card p-8 relative z-10 animate-scale-in">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 rounded-lg bg-brand-50 text-brand-700">
               <UserPlus size={20} />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-800">Create Account</h2>
-              <p className="text-sm text-slate-500">Join the knowledge continuity platform</p>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">Create Account</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Join the knowledge continuity platform</p>
             </div>
           </div>
 
-          {error && <div className="mt-4 text-sm bg-red-50 text-red-700 px-3 py-2 rounded-lg">{error}</div>}
+          {error && (
+            <div className="mt-4 text-sm bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-300 px-3 py-2 rounded-lg">
+              {error}
+            </div>
+          )}
 
           <div className="mt-5 space-y-4">
             <div>
@@ -174,12 +204,14 @@ export default function Signup() {
             {busy ? 'Creating account...' : 'Create Account'}
           </button>
 
-          <p className="text-sm text-slate-500 text-center mt-5">
+          <p className="text-sm text-slate-500 dark:text-slate-400 text-center mt-5">
             Already have an account?{' '}
-            <Link to="/login" className="text-brand-600 hover:underline font-medium">Sign in</Link>
+            <Link to="/login" className="text-brand-600 hover:underline font-medium">
+              Sign in
+            </Link>
           </p>
 
-          <p className="text-xs text-slate-400 text-center mt-4">
+          <p className="text-xs text-slate-400 dark:text-slate-500 text-center mt-4">
             Admin role can only be assigned by an existing administrator.
           </p>
         </form>

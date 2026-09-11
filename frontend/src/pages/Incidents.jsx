@@ -57,7 +57,7 @@ export default function Incidents() {
       </div>
 
       <div className="card overflow-hidden">
-        <table className="w-full text-sm">
+        <table className="w-full text-sm table-stagger">
           <thead className="bg-slate-50 text-slate-600">
             <tr>
               <th className="text-left px-5 py-3">#</th>

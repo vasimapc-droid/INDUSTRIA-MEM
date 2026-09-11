@@ -29,7 +29,7 @@ export default function MyBookmarks() {
 
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
         {items.map(k => (
-          <Link key={k.id} to={'/knowledge/' + k.id} className="card p-5 hover:shadow-md transition">
+          <Link key={k.id} to={'/knowledge/' + k.id} className="card card-hover p-5">
             <div className="flex items-center justify-between">
               <div className="p-2 rounded-lg bg-brand-50 text-brand-700"><BookOpen size={18} /></div>
               <StatusBadge status={k.status} />

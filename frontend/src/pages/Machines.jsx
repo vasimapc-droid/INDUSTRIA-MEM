@@ -25,9 +25,9 @@ export default function Machines() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 stagger">
         {filtered.map(m => (
-          <Link key={m.id} to={'/machines/' + m.id} className="card p-5 hover:shadow-md transition">
+          <Link key={m.id} to={'/machines/' + m.id} className="card card-hover p-5">
             <div className="flex items-start justify-between">
               <div className="p-3 rounded-lg bg-brand-50 text-brand-700"><Factory size={22} /></div>
               <StatusBadge status={m.status} />

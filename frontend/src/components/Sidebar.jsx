@@ -61,7 +61,7 @@ export default function Sidebar() {
         {items.map(({ to, label: itemLabel, icon: Icon }) => (
           <NavLink key={to} to={to} end={to === '/'}
             className={({ isActive }) =>
-              'flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition relative ' +
+              'nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition relative ' +
               (isActive
                 ? 'bg-brand-600 text-white font-medium shadow-sm'
                 : 'text-slate-300 hover:bg-white/5 hover:text-white')}>

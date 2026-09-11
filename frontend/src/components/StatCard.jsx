@@ -1,3 +1,32 @@
+import { useEffect, useState } from 'react';
+
+function CountUp({ value, duration = 600 }) {
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    const numeric = Number(value);
+    if (isNaN(numeric) || value === '-' || value == null) {
+      setDisplay(value);
+      return;
+    }
+    const start = performance.now();
+    const startVal = 0;
+    const endVal = numeric;
+    let raf;
+
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(startVal + (endVal - startVal) * eased));
+      if (progress < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [value, duration]);
+
+  return <span className="count-anim">{display}</span>;
+}
+
 export default function StatCard({ label, value, icon: Icon, tone = 'brand', trend }) {
   const tones = {
     brand:  'bg-gradient-to-br from-blue-500 to-indigo-600 text-white',
@@ -9,10 +38,12 @@ export default function StatCard({ label, value, icon: Icon, tone = 'brand', tre
   };
 
   return (
-    <div className="card p-5 flex items-center justify-between hover:shadow-md transition-shadow">
+    <div className="card card-hover p-5 flex items-center justify-between">
       <div className="min-w-0">
         <p className="text-sm text-slate-500 truncate">{label}</p>
-        <p className="text-2xl font-bold text-slate-800 mt-1">{value}</p>
+        <p className="text-2xl font-bold text-slate-900 mt-1">
+          <CountUp value={value} />
+        </p>
         {trend && (
           <p className={'text-xs mt-1 ' + (trend.positive ? 'text-emerald-600' : 'text-red-600')}>
             {trend.positive ? '▲' : '▼'} {trend.value}

@@ -109,6 +109,367 @@ html.dark h6 {
   color: #f1f5f9 !important;
 }
 
-/* Dashboard heading styles — always dark in light mode */
+/* Dashboard heading styles ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â always dark in light mode */
 .dark-text-strong { color: #0f172a; }
 html.dark .dark-text-strong { color: #f1f5f9 !important; }
+/* ============ ANIMATIONS & TRANSITIONS ============ */
+
+/* Smooth transitions on all interactive elements */
+button, a, .card, .input, tr {
+  transition: all 0.15s ease;
+}
+
+/* Button press feedback */
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Card hover lift */
+.card {
+  transition: all 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .card-hover:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Sidebar nav item slide */
+.nav-item {
+  position: relative;
+  overflow: hidden;
+}
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: rgba(255, 255, 255, 0.05);
+  transition: width 0.2s ease;
+}
+.nav-item:hover::before {
+  width: 100%;
+}
+.nav-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth number changes */
+.count-anim {
+  animation: count-fade 0.4s ease-out;
+}
+@keyframes count-fade {
+  0% { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(59, 130, 246, 0.15);
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin-slow 0.8s linear infinite;
+}
+
+/* Success checkmark */
+@keyframes checkmark-pop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.check-pop {
+  animation: checkmark-pop 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Glow pulse for new items */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+}
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Smooth skeleton shimmer */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #f1f5f9 50%,
+    #e2e8f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+html.dark .shimmer {
+  background: linear-gradient(
+    90deg,
+    #1e293b 0%,
+    #334155 50%,
+    #1e293b 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* Notification bell ring on new */
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0); }
+  10%, 30% { transform: rotate(-12deg); }
+  20%, 40% { transform: rotate(12deg); }
+  50% { transform: rotate(0); }
+}
+.bell-ring {
+  animation: bell-ring 1s ease-in-out;
+}
+
+/* Row highlight on update */
+@keyframes row-flash {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgba(59, 130, 246, 0.1); }
+}
+.row-flash {
+  animation: row-flash 1.5s ease-in-out;
+}
+
+/* Fade-out for deletion */
+@keyframes fade-out {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-20px); max-height: 0; padding: 0; margin: 0; }
+}
+.fade-out {
+  animation: fade-out 0.3s ease-in forwards;
+}
+/* ============ STAGGERED ENTRANCE ANIMATIONS ============ */
+
+/* Cards that stagger in when their parent renders */
+.stagger > * {
+  opacity: 0;
+  animation: stagger-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 40ms; }
+.stagger > *:nth-child(3) { animation-delay: 80ms; }
+.stagger > *:nth-child(4) { animation-delay: 120ms; }
+.stagger > *:nth-child(5) { animation-delay: 160ms; }
+.stagger > *:nth-child(6) { animation-delay: 200ms; }
+.stagger > *:nth-child(7) { animation-delay: 240ms; }
+.stagger > *:nth-child(8) { animation-delay: 280ms; }
+
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Sequential fade for stacked sections */
+.fade-seq > * {
+  opacity: 0;
+  animation: fade-seq-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.fade-seq > *:nth-child(1) { animation-delay: 0ms; }
+.fade-seq > *:nth-child(2) { animation-delay: 100ms; }
+.fade-seq > *:nth-child(3) { animation-delay: 200ms; }
+.fade-seq > *:nth-child(4) { animation-delay: 300ms; }
+.fade-seq > *:nth-child(5) { animation-delay: 400ms; }
+
+@keyframes fade-seq-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* List items slide in from the left */
+.list-slide > * {
+  opacity: 0;
+  animation: list-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.list-slide > *:nth-child(1) { animation-delay: 0ms; }
+.list-slide > *:nth-child(2) { animation-delay: 50ms; }
+.list-slide > *:nth-child(3) { animation-delay: 100ms; }
+.list-slide > *:nth-child(4) { animation-delay: 150ms; }
+.list-slide > *:nth-child(5) { animation-delay: 200ms; }
+.list-slide > *:nth-child(6) { animation-delay: 250ms; }
+
+@keyframes list-slide-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Table rows stagger */
+.table-stagger tbody > tr {
+  opacity: 0;
+  animation: table-row-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.table-stagger tbody > tr:nth-child(1) { animation-delay: 0ms; }
+.table-stagger tbody > tr:nth-child(2) { animation-delay: 30ms; }
+.table-stagger tbody > tr:nth-child(3) { animation-delay: 60ms; }
+.table-stagger tbody > tr:nth-child(4) { animation-delay: 90ms; }
+.table-stagger tbody > tr:nth-child(5) { animation-delay: 120ms; }
+.table-stagger tbody > tr:nth-child(6) { animation-delay: 150ms; }
+.table-stagger tbody > tr:nth-child(7) { animation-delay: 180ms; }
+.table-stagger tbody > tr:nth-child(8) { animation-delay: 210ms; }
+.table-stagger tbody > tr:nth-child(9) { animation-delay: 240ms; }
+.table-stagger tbody > tr:nth-child(10) { animation-delay: 270ms; }
+
+@keyframes table-row-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth page-level transitions */
+.page-enter {
+  animation: page-enter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ============ FLOATING & AMBIENT ANIMATIONS ============ */
+
+/* Soft blurred orbs */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.orb-blue { background: radial-gradient(circle, #3b82f6, transparent 70%); }
+.orb-purple { background: radial-gradient(circle, #8b5cf6, transparent 70%); }
+.orb-cyan { background: radial-gradient(circle, #06b6d4, transparent 70%); }
+.orb-emerald { background: radial-gradient(circle, #10b981, transparent 70%); }
+
+html.dark .orb { opacity: 0.35; }
+
+/* Floating icon containers */
+
+
+html:not(.dark) 
+
+/* Animated grid background */
+.animated-grid {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-slide 4s linear infinite;
+}
+
+html.dark .animated-grid {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+}
+
+/* Subtle dot pattern */
+.dot-pattern {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Hover tilt effect */
+.tilt-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateY(-4px);
+}
+
+/* Pulsing glow for accents */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  animation: glow-pulse-blue 3s ease-in-out infinite;
+}
+@keyframes glow-pulse-blue {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+}
+
+/* Gentle rotation */
+.rotate-slow {
+  animation: spin-slow 30s linear infinite;
+}
+
+/* Drifting particles */
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(59, 130, 246, 0.3);
+  pointer-events: none;
+}
+
+/* Smooth gradient background animation */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Fade-in with scale */
+@keyframes fade-scale-in {
+  0% { opacity: 0; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.fade-scale-in {
+  animation: fade-scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* ============ FLOATING ICONS (FIXED) ============ */
+
+.float-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.float-icon:hover {
+  opacity: 1;
+}
+
+/* The parent panel already dark — force dark icons even when not .dark */
+.login-hero-panel .float-icon {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+/* Slightly dimmer orbs inside hero panels so text stays readable */
+.login-hero-panel .orb {
+  opacity: 0.3;
+}

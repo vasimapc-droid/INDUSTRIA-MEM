@@ -42,7 +42,7 @@ export default function Navbar() {
         <Link to="/notifications" className="relative p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
           <Bell size={20} className="text-slate-600 dark:text-slate-300" />
           {unread > 0 && (
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1">
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 animate-pulse-soft">
               {unread > 9 ? '9+' : unread}
             </span>
           )}
