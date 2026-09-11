@@ -115,7 +115,7 @@ export default function AdminMachines() {
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">Machine Management</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Machine Management</h2>
           <p className="text-sm text-slate-500">Add, edit, and remove machines</p>
         </div>
         <div className="flex gap-2 items-center">

@@ -1,7 +1,7 @@
-﻿export default function Settings() {
+export default function Settings() {
   return (
     <div className="max-w-2xl space-y-5">
-      <h2 className="text-xl font-semibold text-slate-800">Settings</h2>
+      <h2 className="text-xl font-semibold text-slate-900">Settings</h2>
       <div className="card p-6 space-y-4">
         <div>
           <label className="label">Language</label>

@@ -65,7 +65,7 @@ export default function AdminDepartments() {
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">Departments</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Departments</h2>
           <p className="text-sm text-slate-500">Organize users and machines by department</p>
         </div>
         <button onClick={() => setCreating(true)} className="btn-primary flex items-center gap-2">

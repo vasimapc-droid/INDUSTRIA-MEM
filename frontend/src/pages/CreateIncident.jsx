@@ -112,7 +112,7 @@ export default function CreateIncident() {
   return (
     <form onSubmit={submit} className="space-y-5 max-w-4xl">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-slate-800">Report New Incident</h2>
+        <h2 className="text-xl font-semibold text-slate-900">Report New Incident</h2>
         <button type="button" onClick={runAI} disabled={aiLoading} className="btn-secondary flex items-center gap-2">
           <Sparkles size={16} />{aiLoading ? 'Analyzing...' : 'AI Structure'}
         </button>

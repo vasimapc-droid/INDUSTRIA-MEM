@@ -20,7 +20,7 @@ export default function AdminManage() {
   return (
     <div className="space-y-5">
       <div className="flex flex-col gap-1">
-        <h2 className="text-xl font-semibold text-slate-800">Administration</h2>
+        <h2 className="text-xl font-semibold text-slate-900">Administration</h2>
         <p className="text-sm text-slate-500">Manage users, departments, machines and audit trail</p>
       </div>
 

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Factory, AlertTriangle, ShieldCheck, Clock, Mic, FilePlus, Search, Users } from 'lucide-react';
 import StatCard from '../components/StatCard';

@@ -16,7 +16,7 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-800">Plant Dashboard</h1>
+        <h1 className="text-2xl font-bold text-slate-900">Plant Dashboard</h1>
         <p className="text-sm text-slate-500 mt-1">Plant-wide metrics, activity and knowledge health</p>
       </div>
 
@@ -30,7 +30,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <Link to="/admin" className="p-4 rounded-lg border border-slate-200 hover:border-brand-500 hover:bg-brand-50/40 transition">
           <p className="text-sm font-medium text-slate-800">Administration</p>
-          <p className="text-xs text-slate-500 mt-1">Users · Departments</p>
+          <p className="text-xs text-slate-500 mt-1">Users Â· Departments</p>
         </Link>
         <Link to="/reports" className="p-4 rounded-lg border border-slate-200 hover:border-brand-500 hover:bg-brand-50/40 transition">
           <p className="text-sm font-medium text-slate-800">Reports</p>
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
                   <AlertCircle size={16} className="text-amber-600" />
                   <span className="text-sm text-slate-800">{p.rootCause}</span>
                 </div>
-                <span className="text-sm font-semibold text-amber-600">{p.count}×</span>
+                <span className="text-sm font-semibold text-amber-600">{p.count}Ã—</span>
               </div>
             ))}
             {!(data.recurringProblems || []).length && (
@@ -140,7 +140,7 @@ export default function AdminDashboard() {
                   <p className="text-sm font-medium text-slate-800">{a.action}</p>
                   <p className="text-xs text-slate-500 mt-1 truncate">{a.details}</p>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    {a.userEmail || '(system)'} · {a.createdAt ? new Date(a.createdAt).toLocaleString() : ''}
+                    {a.userEmail || '(system)'} Â· {a.createdAt ? new Date(a.createdAt).toLocaleString() : ''}
                   </p>
                 </div>
               </div>

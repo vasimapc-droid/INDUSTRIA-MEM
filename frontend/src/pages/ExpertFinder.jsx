@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, Award, Send } from 'lucide-react';
 import api from '../api/client';
 
@@ -15,7 +15,7 @@ export default function ExpertFinder() {
 
   return (
     <div className="space-y-5 max-w-3xl">
-      <h2 className="text-xl font-semibold text-slate-800">Find an Expert</h2>
+      <h2 className="text-xl font-semibold text-slate-900">Find an Expert</h2>
       <div className="flex gap-2">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16}/>

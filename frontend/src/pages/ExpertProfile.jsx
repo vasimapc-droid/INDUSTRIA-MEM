@@ -40,7 +40,7 @@ export default function ExpertProfile() {
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-lg bg-brand-50 text-brand-700"><Award size={20} /></div>
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">Expert Profile</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Expert Profile</h2>
           <p className="text-sm text-slate-500">Your expertise, skills and availability</p>
         </div>
       </div>

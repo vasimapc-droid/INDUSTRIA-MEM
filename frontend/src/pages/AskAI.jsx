@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Bot, Send } from 'lucide-react';
 import api from '../api/client';
 
@@ -27,7 +27,7 @@ export default function AskAI() {
       <div className="flex items-center gap-3 mb-4">
         <div className="p-2 rounded-lg bg-brand-50 text-brand-700"><Bot size={20}/></div>
         <div>
-          <h2 className="text-lg font-semibold text-slate-800">Ask AI</h2>
+          <h2 className="text-lg font-semibold text-slate-900">Ask AI</h2>
           <p className="text-xs text-slate-500">Answers are grounded in your company's verified knowledge only.</p>
         </div>
       </div>

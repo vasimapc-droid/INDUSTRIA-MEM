@@ -16,7 +16,7 @@ export default function MyBookmarks() {
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-lg bg-amber-50 text-amber-700"><Bookmark size={20} /></div>
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">My Bookmarks</h2>
+          <h2 className="text-xl font-semibold text-slate-900">My Bookmarks</h2>
           <p className="text-sm text-slate-500">Knowledge entries you've saved for quick access</p>
         </div>
       </div>

@@ -116,7 +116,7 @@ export default function AdminUsers() {
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">User Management</h2>
+          <h2 className="text-xl font-semibold text-slate-900">User Management</h2>
           <p className="text-sm text-slate-500">Add, edit roles, activate/deactivate users</p>
         </div>
         <div className="flex gap-2 items-center">

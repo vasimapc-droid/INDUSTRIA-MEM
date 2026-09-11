@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Factory, Search } from 'lucide-react';
 import api from '../api/client';
@@ -17,7 +17,7 @@ export default function Machines() {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-slate-800">Machines</h2>
+        <h2 className="text-xl font-semibold text-slate-900">Machines</h2>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
           <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search machines..."

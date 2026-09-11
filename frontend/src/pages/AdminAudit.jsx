@@ -56,7 +56,7 @@ export default function AdminAudit() {
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">Audit Logs</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Audit Logs</h2>
           <p className="text-sm text-slate-500">Who did what and when (last 100 events)</p>
         </div>
         <div className="flex items-center gap-2 flex-wrap">

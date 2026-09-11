@@ -27,7 +27,7 @@ export default function Incidents() {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
-        <h2 className="text-xl font-semibold text-slate-800">Incidents</h2>
+        <h2 className="text-xl font-semibold text-slate-900">Incidents</h2>
         <div className="flex gap-2 items-center flex-wrap">
           <div className="inline-flex rounded-lg border border-slate-300 overflow-hidden">
             <button onClick={() => setScope('ALL')}

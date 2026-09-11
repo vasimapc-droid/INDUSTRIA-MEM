@@ -89,7 +89,7 @@ export default function VoiceCapture() {
 
   return (
     <div className="max-w-3xl space-y-5">
-      <h2 className="text-xl font-semibold text-slate-800">Voice Experience Capture</h2>
+      <h2 className="text-xl font-semibold text-slate-900">Voice Experience Capture</h2>
       <p className="text-sm text-slate-500">Record your experience about a problem you solved. The AI will structure it for verification.</p>
 
       <div className="card p-6 space-y-4">

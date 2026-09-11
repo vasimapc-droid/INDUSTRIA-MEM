@@ -52,7 +52,7 @@ export default function Reports() {
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">Reports & Analytics</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Reports & Analytics</h2>
           <p className="text-sm text-slate-500">Plant metrics, trends and exports</p>
         </div>
         <div className="flex items-center gap-2">

@@ -24,7 +24,7 @@ export default function MyRequests() {
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-lg bg-brand-50 text-brand-700"><MessageSquare size={20} /></div>
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">My Expert Requests</h2>
+          <h2 className="text-xl font-semibold text-slate-900">My Expert Requests</h2>
           <p className="text-sm text-slate-500">Questions you've asked senior engineers</p>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default function MyRequests() {
                 <div className="flex-1">
                   <p className="font-medium text-slate-800">{r.subject}</p>
                   <p className="text-xs text-slate-500 mt-1">
-                    To {r.expert?.fullName} · {new Date(r.createdAt).toLocaleString()}
+                    To {r.expert?.fullName} Â· {new Date(r.createdAt).toLocaleString()}
                   </p>
                 </div>
                 <span className={'px-2 py-0.5 rounded-full text-xs font-medium ' + statusBadge(r.status)}>
@@ -65,7 +65,7 @@ export default function MyRequests() {
               <div>
                 <h3 className="font-semibold text-slate-800 text-lg">{selected.subject}</h3>
                 <p className="text-sm text-slate-500">
-                  To {selected.expert?.fullName} · {new Date(selected.createdAt).toLocaleString()}
+                  To {selected.expert?.fullName} Â· {new Date(selected.createdAt).toLocaleString()}
                 </p>
               </div>
               <span className={'px-2 py-0.5 rounded-full text-xs font-medium ' + statusBadge(selected.status)}>

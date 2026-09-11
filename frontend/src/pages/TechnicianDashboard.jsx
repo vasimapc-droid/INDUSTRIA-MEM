@@ -21,7 +21,7 @@ export default function TechnicianDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-800">Technician Dashboard</h1>
+        <h1 className="text-2xl font-bold text-slate-900">Technician Dashboard</h1>
         <p className="text-sm text-slate-500 mt-1">Your incidents, requests and knowledge at a glance</p>
       </div>
 
@@ -66,7 +66,7 @@ export default function TechnicianDashboard() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <p className="font-medium text-slate-800 text-sm">{i.title}</p>
-                    <p className="text-xs text-slate-500 mt-1">{i.machine?.name} · {new Date(i.incidentDate || i.createdAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-slate-500 mt-1">{i.machine?.name} Â· {new Date(i.incidentDate || i.createdAt).toLocaleDateString()}</p>
                   </div>
                   <div className="flex flex-col items-end gap-1">
                     <PriorityBadge priority={i.priority} />
@@ -94,7 +94,7 @@ export default function TechnicianDashboard() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <p className="font-medium text-slate-800 text-sm">{r.subject}</p>
-                    <p className="text-xs text-slate-500 mt-1">To {r.expert?.fullName} · {new Date(r.createdAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-slate-500 mt-1">To {r.expert?.fullName} Â· {new Date(r.createdAt).toLocaleDateString()}</p>
                   </div>
                   <StatusBadge status={r.status} />
                 </div>

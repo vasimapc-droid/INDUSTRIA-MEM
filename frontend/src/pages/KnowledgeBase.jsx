@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, BookOpen, Sparkles } from 'lucide-react';
 import api from '../api/client';
@@ -31,7 +31,7 @@ export default function KnowledgeBase() {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
-        <h2 className="text-xl font-semibold text-slate-800">Knowledge Base</h2>
+        <h2 className="text-xl font-semibold text-slate-900">Knowledge Base</h2>
         <div className="flex gap-2">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />

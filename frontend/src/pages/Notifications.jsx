@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Bell } from 'lucide-react';
 import api from '../api/client';
 
@@ -15,7 +15,7 @@ export default function Notifications() {
 
   return (
     <div className="max-w-3xl space-y-4">
-      <h2 className="text-xl font-semibold text-slate-800">Notifications</h2>
+      <h2 className="text-xl font-semibold text-slate-900">Notifications</h2>
       {!items.length && <div className="card p-8 text-center text-slate-500">No notifications yet.</div>}
       {items.map(n => (
         <div key={n.id} className={'card p-4 flex items-start gap-3 ' + (!n.isRead ? 'border-l-4 border-brand-500' : '')}>

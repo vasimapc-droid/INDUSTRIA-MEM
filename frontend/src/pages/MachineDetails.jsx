@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import { Factory, QrCode } from 'lucide-react';
@@ -30,7 +30,7 @@ export default function MachineDetails() {
           <div className="flex items-center gap-4">
             <div className="p-3 rounded-lg bg-brand-50 text-brand-700"><Factory size={28} /></div>
             <div>
-              <h2 className="text-xl font-semibold text-slate-800">{machine.name}</h2>
+              <h2 className="text-xl font-semibold text-slate-900">{machine.name}</h2>
               <p className="text-sm text-slate-500">{machine.machineCode} - {machine.machineType}</p>
             </div>
             <div className="ml-auto"><StatusBadge status={machine.status} /></div>

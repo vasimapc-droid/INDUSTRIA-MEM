@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Check, X, Edit3 } from 'lucide-react';
 import api from '../api/client';
 
@@ -26,7 +26,7 @@ export default function PendingVerification() {
 
   return (
     <div className="space-y-5">
-      <h2 className="text-xl font-semibold text-slate-800">Pending Verification</h2>
+      <h2 className="text-xl font-semibold text-slate-900">Pending Verification</h2>
       {!items.length && <div className="card p-8 text-center text-slate-500">No pending items</div>}
       {items.map(k => (
         <div key={k.id} className="card p-5">

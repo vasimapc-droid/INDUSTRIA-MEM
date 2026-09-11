@@ -62,15 +62,15 @@ export default function KnowledgeDetails() {
       <div className="card p-6">
         <div className="flex items-start justify-between flex-wrap gap-3">
           <div>
-            <h2 className="text-xl font-semibold text-slate-800">{k.title}</h2>
-            <p className="text-sm text-slate-500 mt-1">{k.machine?.name} · {k.category}</p>
+            <h2 className="text-xl font-semibold text-slate-900">{k.title}</h2>
+            <p className="text-sm text-slate-500 mt-1">{k.machine?.name} Â· {k.category}</p>
           </div>
           <StatusBadge status={k.status} />
         </div>
         {k.status === 'EXPERT_VERIFIED' && (
           <div className="mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg px-4 py-2 text-sm flex items-center gap-2">
             <ShieldCheck size={16} />
-            Verified by {k.verifiedBy?.fullName} · {k.verifiedAt ? new Date(k.verifiedAt).toLocaleDateString() : ''}
+            Verified by {k.verifiedBy?.fullName} Â· {k.verifiedAt ? new Date(k.verifiedAt).toLocaleDateString() : ''}
           </div>
         )}
 

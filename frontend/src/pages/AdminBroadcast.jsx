@@ -31,7 +31,7 @@ export default function AdminBroadcast() {
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-lg bg-brand-50 text-brand-700"><Users size={20} /></div>
         <div>
-          <h2 className="text-xl font-semibold text-slate-800">Send Notification</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Send Notification</h2>
           <p className="text-sm text-slate-500">Broadcast a message to users in the plant</p>
         </div>
       </div>

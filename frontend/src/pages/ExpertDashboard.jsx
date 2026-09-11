@@ -15,7 +15,7 @@ export default function ExpertDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-800">Expert Dashboard</h1>
+        <h1 className="text-2xl font-bold text-slate-900">Expert Dashboard</h1>
         <p className="text-sm text-slate-500 mt-1">Verification queue, expert requests and your contributions</p>
       </div>
 
@@ -55,7 +55,7 @@ export default function ExpertDashboard() {
               <Link key={k.id} to="/pending-verification" className="block p-4 hover:bg-slate-50/60">
                 <p className="font-medium text-slate-800 text-sm">{k.title}</p>
                 <p className="text-xs text-slate-500 mt-1">
-                  {k.machine?.name} · by {k.submittedBy?.fullName} · {new Date(k.createdAt).toLocaleDateString()}
+                  {k.machine?.name} Â· by {k.submittedBy?.fullName} Â· {new Date(k.createdAt).toLocaleDateString()}
                 </p>
               </Link>
             ))}
@@ -76,7 +76,7 @@ export default function ExpertDashboard() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <p className="font-medium text-slate-800 text-sm">{r.subject}</p>
-                    <p className="text-xs text-slate-500 mt-1">From {r.requester?.fullName} · {new Date(r.createdAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-slate-500 mt-1">From {r.requester?.fullName} Â· {new Date(r.createdAt).toLocaleDateString()}</p>
                   </div>
                   <StatusBadge status={r.status} />
                 </div>
@@ -99,7 +99,7 @@ export default function ExpertDashboard() {
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex-1">
                     <p className="font-medium text-slate-800 text-sm">{k.title}</p>
-                    <p className="text-xs text-slate-500 mt-1">{k.machine?.name} · {new Date(k.verifiedAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-slate-500 mt-1">{k.machine?.name} Â· {new Date(k.verifiedAt).toLocaleDateString()}</p>
                   </div>
                   <span className="text-xs text-emerald-600 flex items-center gap-1">
                     <CheckCircle size={12} /> Verified

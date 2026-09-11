@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../api/client';
 import PriorityBadge from '../components/PriorityBadge';
@@ -17,7 +17,7 @@ export default function IncidentDetails() {
       <div className="card p-6">
         <div className="flex items-start justify-between flex-wrap gap-3">
           <div>
-            <h2 className="text-xl font-semibold text-slate-800">{inc.title}</h2>
+            <h2 className="text-xl font-semibold text-slate-900">{inc.title}</h2>
             <p className="text-sm text-slate-500 mt-1">
               {inc.machine?.name} - {new Date(inc.incidentDate).toLocaleString()}
             </p>
