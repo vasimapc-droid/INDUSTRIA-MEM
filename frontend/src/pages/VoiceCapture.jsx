@@ -1,8 +1,9 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mic, Square, Trash2, Sparkles, Upload } from 'lucide-react';
 import { AI_BASE } from '../api/client';
 import api from '../api/client';
+import notify from '../utils/notify';
 
 export default function VoiceCapture() {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ export default function VoiceCapture() {
       const r = await fetch(AI_BASE + '/transcribe', { method: 'POST', body: fd });
       const data = await r.json();
       setTranscript(data.text || '');
-    } catch (e) { alert('Transcription failed. Ensure AI service is running.'); }
+    } catch (e) { notify.error('Transcription failed. Ensure AI service is running.'); }
     finally { setBusy(false); }
   };
 
@@ -64,7 +65,7 @@ export default function VoiceCapture() {
   };
 
   const save = async () => {
-    if (!structured || !machineId) { alert('Select a machine first.'); return; }
+    if (!structured || !machineId) { notify.error('Select a machine first.'); return; }
     setSaving(true);
     try {
       await api.post('/knowledge', {
@@ -82,7 +83,7 @@ export default function VoiceCapture() {
         status: 'PENDING_VERIFICATION'
       });
       navigate('/knowledge');
-    } catch (e) { alert('Save failed'); }
+    } catch (e) { notify.error('Save failed'); }
     finally { setSaving(false); }
   };
 

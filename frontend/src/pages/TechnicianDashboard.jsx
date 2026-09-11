@@ -4,13 +4,18 @@ import { AlertTriangle, FilePlus, Search, Mic, MessageSquare, BookOpen, Clock } 
 import StatCard from '../components/StatCard';
 import PriorityBadge from '../components/PriorityBadge';
 import StatusBadge from '../components/StatusBadge';
+import { SkeletonCardList } from '../components/Skeleton';
 import api from '../api/client';
 
 export default function TechnicianDashboard() {
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get('/dashboard/technician').then(r => setData(r.data)).catch(() => {});
+    api.get('/dashboard/technician')
+      .then(r => setData(r.data))
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -20,12 +25,16 @@ export default function TechnicianDashboard() {
         <p className="text-sm text-slate-500 mt-1">Your incidents, requests and knowledge at a glance</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        <StatCard label="My Open Incidents" value={data.myOpenIncidents ?? '-'} icon={AlertTriangle} tone="amber" />
-        <StatCard label="Reported (30d)" value={data.myRecentReports ?? '-'} icon={FilePlus} tone="brand" />
-        <StatCard label="Pending Requests" value={data.myPendingRequests ?? '-'} icon={Clock} tone="red" />
-        <StatCard label="Verified Knowledge" value={data.verifiedKnowledgeCount ?? '-'} icon={BookOpen} tone="green" />
-      </div>
+      {loading ? (
+        <SkeletonCardList count={4} />
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+          <StatCard label="My Open Incidents" value={data.myOpenIncidents ?? '-'} icon={AlertTriangle} tone="amber" />
+          <StatCard label="Reported (30d)" value={data.myRecentReports ?? '-'} icon={FilePlus} tone="brand" />
+          <StatCard label="Pending Requests" value={data.myPendingRequests ?? '-'} icon={Clock} tone="red" />
+          <StatCard label="Verified Knowledge" value={data.verifiedKnowledgeCount ?? '-'} icon={BookOpen} tone="green" />
+        </div>
+      )}
 
       <div className="card p-5">
         <h3 className="font-semibold text-slate-800 mb-3">Quick Actions</h3>
