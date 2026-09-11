@@ -1,6 +1,6 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const { login, loading } = useAuth();
@@ -71,7 +71,15 @@ export default function Login() {
               <button type="button" onClick={() => quick('admin@demo.com')} className="text-xs px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200">Admin</button>
             </div>
           </div>
-        </form>
+        
+
+          <p className="text-sm text-slate-500 text-center mt-6">
+            New to INDUSTRIA-MEM?{' '}
+            <Link to="/signup" className="text-brand-600 hover:underline font-medium">
+              Create an account
+            </Link>
+          </p>
+</form>
       </div>
     </div>
   );
