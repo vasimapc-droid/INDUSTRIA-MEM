@@ -25,3 +25,7 @@ uploads/documents/*
 dist/
 build/
 *.class
+
+# Backup files
+*.bak
+*.broken*
