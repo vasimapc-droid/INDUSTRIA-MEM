@@ -52,12 +52,11 @@ export default function Login() {
             </span>
           </p>
           <p className="text-slate-300 text-sm max-w-md leading-relaxed relative z-10" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
-            Preserve the practical knowledge of automotive manufacturing experts Ã¢â‚¬â€
+            Preserve the practical knowledge of automotive manufacturing experts —
             verified, searchable, and reusable across generations of technicians.
           </p>
 
-          {/* Feature chips */}
-          <div className="grid grid-cols-2 gap-3 max-w-md">
+          <div className="grid grid-cols-2 gap-3 max-w-md relative z-10">
             {[
               { icon: ShieldCheck, label: 'Expert Verified', color: 'text-emerald-400' },
               { icon: Zap, label: 'AI Structuring', color: 'text-amber-400' },
@@ -74,13 +73,12 @@ export default function Login() {
         </div>
 
         <div className="relative z-10">
-          <p className="text-slate-500 text-xs">Ã‚Â© 2025 Industria-MEM Ã‚Â· Automotive Manufacturing</p>
+          <p className="text-slate-500 text-xs">© 2025 Industria-MEM · Automotive Manufacturing</p>
         </div>
       </div>
 
       {/* RIGHT: Login form */}
       <div className="flex items-center justify-center p-8 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
-        {/* Subtle background orbs for form side */}
         <div className="orb orb-blue animate-drift"
           style={{ width: 200, height: 200, top: '-50px', right: '-50px', opacity: 0.25 }} />
         <div className="orb orb-purple animate-drift-slow"
@@ -90,7 +88,11 @@ export default function Login() {
           <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Sign in</h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Access the knowledge continuity platform</p>
 
-          {error && <div className="mt-4 text-sm bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-300 px-3 py-2 rounded-lg">{error}</div>}
+          {error && (
+            <div className="mt-4 text-sm bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-300 px-3 py-2 rounded-lg">
+              {error}
+            </div>
+          )}
 
           <div className="mt-6 space-y-4">
             <div>
@@ -98,7 +100,12 @@ export default function Login() {
               <input className="input" value={email} onChange={e => setEmail(e.target.value)} type="email" required />
             </div>
             <div>
-              <label className="label">Password</label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="label !mb-0">Password</label>
+                <Link to="/forgot-password" className="text-xs text-brand-600 hover:underline">
+                  Forgot password?
+                </Link>
+              </div>
               <input className="input" value={password} onChange={e => setPassword(e.target.value)} type="password" required />
             </div>
           </div>

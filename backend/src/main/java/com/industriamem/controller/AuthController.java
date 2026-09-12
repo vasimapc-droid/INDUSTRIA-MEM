@@ -118,4 +118,70 @@ public class AuthController {
             throw new ApiException("Failed to upload: " + e.getMessage());
         }
     }
+
+    // ==================== PASSWORD RESET ====================
+
+    @PostMapping("/forgot-password")
+    public Map<String,Object> forgotPassword(@RequestBody Map<String,String> body) {
+        String email = body.get("email");
+        if (email == null || email.isBlank()) {
+            throw new ApiException("Email is required");
+        }
+
+        User user = userRepository.findByEmail(email).orElse(null);
+
+        // Always return success to prevent email enumeration
+        Map<String,Object> response = new java.util.LinkedHashMap<>();
+        response.put("success", true);
+        response.put("message", "If an account exists with that email, reset instructions have been sent.");
+
+        if (user == null) {
+            return response;
+        }
+
+        // Generate reset token
+        String token = UUID.randomUUID().toString().replace("-", "");
+        user.setResetToken(token);
+        user.setResetTokenExpiresAt(java.time.LocalDateTime.now().plusMinutes(15));
+        userRepository.save(user);
+
+        // In production, send email here.
+        // For DEMO, return the token directly in the response.
+        // In production, remove these two lines.
+        response.put("devToken", token);
+        response.put("devNote", "Token returned directly (development mode). In production this would be emailed.");
+
+        System.out.println("=======================================");
+        System.out.println("PASSWORD RESET TOKEN FOR: " + email);
+        System.out.println("Token: " + token);
+        System.out.println("Expires in 15 minutes.");
+        System.out.println("=======================================");
+
+        return response;
+    }
+
+    @PostMapping("/reset-password")
+    public Map<String,Object> resetPassword(@RequestBody Map<String,String> body) {
+        String token = body.get("token");
+        String newPassword = body.get("newPassword");
+
+        if (token == null || token.isBlank() || newPassword == null || newPassword.length() < 6) {
+            throw new ApiException("Token and new password (min 6 chars) are required");
+        }
+
+        User user = userRepository.findByResetToken(token)
+                .orElseThrow(() -> new ApiException("Invalid or expired reset token"));
+
+        if (user.getResetTokenExpiresAt() == null ||
+            user.getResetTokenExpiresAt().isBefore(java.time.LocalDateTime.now())) {
+            throw new ApiException("Reset token has expired. Please request a new one.");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setResetToken(null);
+        user.setResetTokenExpiresAt(null);
+        userRepository.save(user);
+
+        return Map.of("success", true, "message", "Password reset successfully. You can now log in.");
+    }
 }
