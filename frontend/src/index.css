@@ -109,7 +109,7 @@ html.dark h6 {
   color: #f1f5f9 !important;
 }
 
-/* Dashboard heading styles ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â always dark in light mode */
+/* Dashboard heading styles ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â always dark in light mode */
 .dark-text-strong { color: #0f172a; }
 html.dark .dark-text-strong { color: #f1f5f9 !important; }
 /* ============ ANIMATIONS & TRANSITIONS ============ */
@@ -464,7 +464,7 @@ html.dark .animated-grid {
   opacity: 1;
 }
 
-/* The parent panel already dark — force dark icons even when not .dark */
+/* The parent panel already dark â€” force dark icons even when not .dark */
 .login-hero-panel .float-icon {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -472,4 +472,48 @@ html.dark .animated-grid {
 /* Slightly dimmer orbs inside hero panels so text stays readable */
 .login-hero-panel .orb {
   opacity: 0.3;
+}
+
+/* ============ MOBILE RESPONSIVE UTILITIES ============ */
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+img, table, pre {
+  max-width: 100%;
+}
+
+.break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  button, a {
+    min-height: 40px;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  h1, h2, h3 {
+    overflow-wrap: anywhere;
+  }
+
+  table {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.5);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.8); }
 }

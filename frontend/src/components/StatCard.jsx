@@ -10,14 +10,11 @@ function CountUp({ value, duration = 600 }) {
       return;
     }
     const start = performance.now();
-    const startVal = 0;
-    const endVal = numeric;
     let raf;
-
     const step = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(startVal + (endVal - startVal) * eased));
+      setDisplay(Math.round(numeric * eased));
       if (progress < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
@@ -38,10 +35,10 @@ export default function StatCard({ label, value, icon: Icon, tone = 'brand', tre
   };
 
   return (
-    <div className="card card-hover p-5 flex items-center justify-between">
+    <div className="card card-hover p-4 lg:p-5 flex items-center justify-between">
       <div className="min-w-0">
-        <p className="text-sm text-slate-500 truncate">{label}</p>
-        <p className="text-2xl font-bold text-slate-900 mt-1">
+        <p className="text-xs lg:text-sm text-slate-500 truncate">{label}</p>
+        <p className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">
           <CountUp value={value} />
         </p>
         {trend && (
@@ -51,8 +48,8 @@ export default function StatCard({ label, value, icon: Icon, tone = 'brand', tre
         )}
       </div>
       {Icon && (
-        <div className={'p-3 rounded-xl shadow-md ' + tones[tone]}>
-          <Icon size={22} />
+        <div className={'p-2 lg:p-3 rounded-xl shadow-md flex-shrink-0 ' + tones[tone]}>
+          <Icon size={20} />
         </div>
       )}
     </div>

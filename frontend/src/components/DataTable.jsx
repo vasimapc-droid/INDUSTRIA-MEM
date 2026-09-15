@@ -36,18 +36,16 @@ export default function DataTable({
   return (
     <div className="card overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full text-sm min-w-[600px]">
           <thead className="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
             <tr>
               {columns.map(col => (
                 <th key={col.key}
                   onClick={() => col.sortable !== false && handleSort(col.key)}
-                  className={'text-left px-4 py-3 ' + (col.sortable !== false ? 'cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-700' : '')}>
+                  className={'text-left px-4 py-3 whitespace-nowrap ' + (col.sortable !== false ? 'cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-700' : '')}>
                   <div className="flex items-center gap-1">
                     {col.label}
-                    {sortKey === col.key && (sortDir === 'asc'
-                      ? <ChevronUp size={14} />
-                      : <ChevronDown size={14} />)}
+                    {sortKey === col.key && (sortDir === 'asc' ? <ChevronUp size={14} /> : <ChevronDown size={14} />)}
                   </div>
                 </th>
               ))}
@@ -60,7 +58,7 @@ export default function DataTable({
                 className={'border-t border-slate-200 dark:border-slate-800 ' +
                   (onRowClick ? 'cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50' : '')}>
                 {columns.map(col => (
-                  <td key={col.key} className="px-4 py-3">
+                  <td key={col.key} className="px-4 py-3 whitespace-nowrap">
                     {col.render ? col.render(row) : row[col.key]}
                   </td>
                 ))}
@@ -74,16 +72,16 @@ export default function DataTable({
       </div>
 
       {totalPages > 1 && (
-        <div className="flex items-center justify-between px-4 py-3 border-t border-slate-200 dark:border-slate-800">
-          <p className="text-xs text-slate-500">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-3 border-t border-slate-200 dark:border-slate-800">
+          <p className="text-xs text-slate-500 order-2 sm:order-1">
             Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, sorted.length)} of {sorted.length}
           </p>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 order-1 sm:order-2">
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
               className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30">
               <ChevronLeft size={16} />
             </button>
-            <span className="text-xs text-slate-600 dark:text-slate-400 px-3">
+            <span className="text-xs text-slate-600 dark:text-slate-400 px-3 whitespace-nowrap">
               Page {page} of {totalPages}
             </span>
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}

@@ -1,11 +1,11 @@
-import { Bell, LogOut, Sun, Moon } from 'lucide-react';
+import { Bell, LogOut, Sun, Moon, Menu } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import api from '../api/client';
 
-export default function Navbar() {
+export default function Navbar({ onMenuClick }) {
   const { user, logout } = useAuth();
   const { theme, toggle } = useTheme();
   const navigate = useNavigate();
@@ -27,13 +27,24 @@ export default function Navbar() {
   const roleLabel = { TECHNICIAN: 'Technician', EXPERT: 'Senior Engineer', ADMIN: 'Plant Manager' };
 
   return (
-    <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-3 flex items-center justify-between transition-colors">
-      <div>
-        <h2 className="text-slate-800 dark:text-slate-100 font-semibold">Welcome back, {user?.fullName}</h2>
-        <p className="text-xs text-slate-500 dark:text-slate-400">{roleLabel[user?.role] || user?.role}</p>
+    <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-3 lg:px-6 py-3 flex items-center justify-between transition-colors">
+      <div className="flex items-center gap-2 min-w-0 flex-1">
+        <button
+          onClick={onMenuClick}
+          className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex-shrink-0"
+          aria-label="Open menu">
+          <Menu size={20} className="text-slate-600 dark:text-slate-300" />
+        </button>
+        <div className="min-w-0">
+          <h2 className="text-sm lg:text-base text-slate-800 dark:text-slate-100 font-semibold truncate">
+            Welcome back, {user?.fullName}
+          </h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{roleLabel[user?.role] || user?.role}</p>
+        </div>
       </div>
-      <div className="flex items-center gap-3">
-        <button onClick={toggle} className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle theme">
+
+      <div className="flex items-center gap-1 lg:gap-3 flex-shrink-0">
+        <button onClick={toggle} className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
           {theme === 'dark'
             ? <Sun size={20} className="text-amber-400" />
             : <Moon size={20} className="text-slate-600" />}
@@ -49,8 +60,9 @@ export default function Navbar() {
         </Link>
 
         <button onClick={() => { logout(); navigate('/login'); }}
-          className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-          <LogOut size={16} /> Logout
+          className="flex items-center gap-1 lg:gap-2 text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+          <LogOut size={16} />
+          <span className="hidden lg:inline">Logout</span>
         </button>
       </div>
     </header>
