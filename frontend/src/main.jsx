@@ -7,6 +7,16 @@ import './index.css';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
+// Global fetch patch: automatically add ngrok header to bypass warning page
+const _originalFetch = window.fetch;
+window.fetch = function(input, init) {
+  const newInit = init ? { ...init } : {};
+  const headers = new Headers(newInit.headers || {});
+  headers.set('ngrok-skip-browser-warning', 'true');
+  newInit.headers = headers;
+  return _originalFetch(input, newInit);
+};
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

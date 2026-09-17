@@ -2,9 +2,13 @@ package com.industriamem.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.*;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -43,6 +47,43 @@ public class AiController {
             return ResponseEntity.ok(Map.of(
                 "answer", "AI service is currently unavailable. Please try again later or ask an expert.",
                 "fallback", true));
+        }
+    }
+
+    // ============ AUDIO TRANSCRIPTION PROXY ============
+    @PostMapping("/transcribe")
+    public ResponseEntity<?> transcribe(@RequestParam("file") MultipartFile file) {
+        try {
+            // Prepare multipart body for forwarding to AI service
+            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+            ByteArrayResource resource = new ByteArrayResource(file.getBytes()) {
+                @Override
+                public String getFilename() {
+                    return file.getOriginalFilename() != null ? file.getOriginalFilename() : "audio.webm";
+                }
+            };
+            body.add("file", resource);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+
+            ResponseEntity<Map> response = rest.postForEntity(
+                aiUrl + "/transcribe",
+                requestEntity,
+                Map.class
+            );
+
+            return ResponseEntity.ok(response.getBody());
+        } catch (Exception e) {
+            System.err.println("[transcribe] Failed: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.ok(Map.of(
+                "text", "",
+                "fallback", true,
+                "error", "AI service unavailable: " + e.getMessage()
+            ));
         }
     }
 }

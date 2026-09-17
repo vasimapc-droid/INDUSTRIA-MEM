@@ -34,7 +34,10 @@ export default function Reports() {
   const downloadCsv = (type) => {
     const token = localStorage.getItem('im_token');
     fetch(API_BASE + '/analytics/export/' + type, {
-      headers: { Authorization: 'Bearer ' + token }
+      headers: { 
+        Authorization: 'Bearer ' + token,
+        'ngrok-skip-browser-warning': 'true'
+      }
     })
       .then(r => r.blob())
       .then(blob => {

@@ -104,7 +104,7 @@ def similar_incidents(query: str, top_k: int = 5) -> dict:
                 "rootCause": k.get("rootCause"),
                 "solution": k.get("solution"),
                 "similarity": round(float(s) * 100, 1)
-            } for k, s in ranked if s > 0.15
+            } for k, s in ranked if s > 0.55
         ]
     }
 

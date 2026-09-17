@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mic, Square, Trash2, Sparkles, Upload } from 'lucide-react';
-import { AI_BASE } from '../api/client';
+
 import api from '../api/client';
 import notify from '../utils/notify';
 
@@ -45,8 +45,7 @@ export default function VoiceCapture() {
     try {
       const fd = new FormData();
       fd.append('file', audioBlob, 'audio.webm');
-      const r = await fetch(AI_BASE + '/transcribe', { method: 'POST', body: fd });
-      const data = await r.json();
+      const { data } = await api.post('/ai/transcribe', fd);
       setTranscript(data.text || '');
     } catch (e) { notify.error('Transcription failed. Ensure AI service is running.'); }
     finally { setBusy(false); }

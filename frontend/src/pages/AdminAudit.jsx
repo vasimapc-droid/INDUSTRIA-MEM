@@ -27,7 +27,7 @@ export default function AdminAudit() {
 
   const downloadCsv = () => {
     const token = localStorage.getItem('im_token');
-    fetch(API_BASE + '/admin/audit-logs/export', { headers: { Authorization: 'Bearer ' + token } })
+    fetch(API_BASE + '/admin/audit-logs/export', { headers: { Authorization: 'Bearer ' + token, 'ngrok-skip-browser-warning': 'true' } })
       .then(r => r.blob())
       .then(blob => {
         const url = URL.createObjectURL(blob);
